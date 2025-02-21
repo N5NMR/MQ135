@@ -1,5 +1,5 @@
 # MQ135
-Display the Air Quality on an Nokia 5110 Display
+Display the Air Quality on an Nokia 5110 Display using a ESP8266 (WEMOS D1 mini)
 
 MQ135 mit Nokia Display (I2C)
 Display: 
