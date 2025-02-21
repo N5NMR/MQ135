@@ -9,9 +9,12 @@
 #define OLED_RESET -1    
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+MQ135 gasSensor(A0);  // Sensor-Instanz als globale Variable
+
 float air_quality; 
 String air_Index;
  
+
 void setup()
 {
   Serial.begin(9600);
@@ -25,17 +28,17 @@ void setup()
   display.println("");
   display.println("MQ 135");
   display.display();
+
   delay(4000);
 }
  
  
   void loop()
   {
-    MQ135 gasSensor = MQ135(A0);
+   
     air_quality = gasSensor.getPPM();
-    
     checkAirQuality(air_quality);
-    
+
     Serial.print("Air Quality: ");  
     Serial.print(air_quality);
     Serial.println("  PPM");   
@@ -54,7 +57,7 @@ void setup()
     display.setTextColor(WHITE);
     display.println(" PPM");
     display.setCursor(0,40);  
-    display.print("Luft ist: ");
+    display.print("Luftqualtitaet ist: ");
     display.setCursor(0,50);  
     display.println(air_Index);
     display.display();
